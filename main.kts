@@ -4,9 +4,44 @@ println("UW Homework: Simple Kotlin")
 
 // write a "whenFn" that takes an arg of type "Any" and returns a String
 
+fun whenFn(param: Any): String {
+    if (param is String) {
+        when (param) {
+            "Hello" -> return "world"
+            else -> return "Say what?"
+        }
+    }
+
+    if (param is Number) {
+        if (param in 2..10) {
+            return "low number"
+        }
+
+        when (param) {
+            0 -> return "zero"
+            1 -> return "one"
+            else -> "I don't understand"
+        }
+    }
+    return "I don't understand"
+}
+
 // write an "add" function that takes two Ints, returns an Int, and adds the values
+
+fun add(num1: Int, num2: Int): Int {
+    return num1 + num2
+}
+
 // write a "sub" function that takes two Ints, returns an Int, and subtracts the values
+/*fun sub(Number: num1, Number: num2): Number {
+    return num1 - num2
+}
+
 // write a "mathOp" function that takes two Ints and a function (that takes two Ints and returns an Int), returns an Int, and applies the passed-in-function to the arguments
+
+fun mathOp(Number: num1, Number: num2, mathFun: (Number: num3, Number: num4) -> Number) {
+    return mathFun(num1, num2)
+}*/
 
 // write a class "Person" with first name, last name and age
 
@@ -42,7 +77,7 @@ for ( (k,v) in add_tests) {
 }
 println("")
 
-print("Sub tests: ")
+/*print("Sub tests: ")
 val sub_tests = listOf(
     Pair(0, 0) to 0,
     Pair(2, 1) to 1,
@@ -60,7 +95,6 @@ print(if (mathOp(2, 2, ::add ) == 4) "." else "!")
 print(if (mathOp(2, 2, ::sub ) == 0) "." else "!")
 print(if (mathOp(2, 2, { l,r -> l*r} ) == 4) "." else "!")
 println("")
-
 
 print("Person tests: ")
 val p1 = Person("Ted", "Neward", 47)
@@ -96,3 +130,4 @@ for ( (pair, result) in moneyadd_tests) {
               (pair.first + pair.second).currency == result.currency) "." else "!")
 }
 println("")
+*/
