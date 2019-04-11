@@ -87,6 +87,17 @@ class Person {
 // write a class "Money"
 
 class Money constructor(var amount: Int, val currency: String) {
+
+    operator fun plus(other: Money): Money {
+        var money: Money = other
+        if (other.currency != this.currency) {
+            money = convert(this.currency)
+        }
+        var newAmount: Int = money.amount + this.amount
+        return Money(newAmount, this.currency)
+    }
+
+
     fun convert(otherCurr: String): Money {
         if (this.currency == otherCurr) {
             return Money(this.amount, this.currency)
@@ -213,7 +224,7 @@ val convert_tests = listOf(
 for ( (from,to) in convert_tests) {
     print(if (from.convert(to.currency).amount == to.amount) "." else "!")
 }
-/* val moneyadd_tests = listOf(
+val moneyadd_tests = listOf(
     Pair(tenUSD, tenUSD) to Money(20, "USD"),
     Pair(tenUSD, fiveGBP) to Money(20, "USD"),
     Pair(fiveGBP, tenUSD) to Money(10, "GBP")
@@ -222,4 +233,4 @@ for ( (pair, result) in moneyadd_tests) {
     print(if ((pair.first + pair.second).amount == result.amount &&
               (pair.first + pair.second).currency == result.currency) "." else "!")
 }
-println("")*/
+println("")
